@@ -10,11 +10,10 @@
   </head>
 
   <body>
-    <% flash.each do |key, message| %>
-    <div class="text-center alert alert-<%= key == 'notice'? 'success' : 'danger' %>">
-      <%= message %>
+    <%= render 'layouts/navigation' %>
+    <div class="container">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
     </div>
-    <% end %>
-    <%= yield %>
   </body>
 </html>
