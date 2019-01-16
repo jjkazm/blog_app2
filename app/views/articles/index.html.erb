@@ -2,4 +2,6 @@
 
 <% if @articles.any? %>
   <%= render @articles %>
+<% else %>
+  <h1 id="no-articles">No Articles Created</h1>
 <% end %>
