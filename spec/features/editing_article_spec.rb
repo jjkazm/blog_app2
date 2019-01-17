@@ -9,7 +9,7 @@ RSpec.feature "Editing article" do
     visit "/"
 
     click_link @article.title
-    click_article "Edit Article"
+    click_link "Edit Article"
 
     fill_in "Title", with: "Updated title"
     fill_in "Body", with: "Updated body article"
@@ -26,7 +26,7 @@ RSpec.feature "Editing article" do
     visit "/"
 
     click_link @article.title
-    click_article "Edit Article"
+    click_link "Edit Article"
 
     fill_in "Title", with: ""
     fill_in "Body", with: ""
