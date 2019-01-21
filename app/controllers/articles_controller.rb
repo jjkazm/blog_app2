@@ -23,15 +23,24 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    unless current_user == @article.user
+      flash[:alert] = "You can only edit your own article."
+      redirect_to root_path
+    end
   end
 
   def update
-    if @article.update(article_params)
-      flash[:success] = "Article has been updated"
-      redirect_to article_path(@article)
+    unless current_user == @article.user
+      flash[:alert] = "You can only edit your own article."
+      redirect_to root_path
     else
-      flash.now[:danger] = "Article has not been updated"
-      render :edit
+      if @article.update(article_params)
+        flash[:success] = "Article has been updated"
+        redirect_to article_path(@article)
+      else
+        flash.now[:danger] = "Article has not been updated"
+        render :edit
+      end
     end
   end
 
@@ -39,9 +48,14 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article.destroy
-    flash[:success] = "Article has been deleted"
-    redirect_to articles_path
+    unless current_user == @article.user
+      flash[:alert] = "You can only delete your own article."
+      redirect_to root_path
+    else
+      @article.destroy
+      flash[:success] = "Article has been deleted"
+      redirect_to articles_path
+    end
   end
 
   protected
