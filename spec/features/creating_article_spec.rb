@@ -17,6 +17,7 @@ RSpec.feature "Creating article" do
 
     click_button "Create Article"
 
+    puts page
     expect(Article.last.user).to eq(@user)
     expect(page).to have_content("Article has been created")
     expect(page).to have_content("Created by #{@user.email}")
