@@ -45,6 +45,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @comment = @article.comments.build
+    @comments = @article.comments.reject{ |comment| comment.new_record? }
   end
 
   def destroy
