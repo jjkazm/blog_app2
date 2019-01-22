@@ -14,15 +14,29 @@
   <% end %>
   <hr>
   <div class="col-md-12">
-
     <%= simple_form_for [@article, @comment] do |f| %>
+      <%- if @comment.errors.any? %>
+      <div class="panel panel-danger col-md-offset-1">
+        <div class="panel-hading">
+          <h2 class="panel-title">
+            <%= pluralize(@comment.errors.count, "error") %>
+              prohibited this comment from being saved:
+          </h2>
+          <div class="panel-body">
+            <ul>
+              <% @comment.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <% end %>
       <%= f.input :body, label: "New Comment", placeholder: "Your comment" %>
       <%= f.button :submit, "Add Comment", class: "btn btn-primary" %>
     <% end %>
   </div>
-  <hr>
-  <hr>
-  <hr>
+
   <div class="col-md-12">
     <% if @article.comments.any? %>
       <div class="comments">
@@ -32,5 +46,4 @@
       There are no comments to show
     <% end %>
   </div>
-
 </article>
