@@ -14,7 +14,7 @@
   <% end %>
   <hr>
   <div class="col-md-12">
-    <%= simple_form_for [@article, @comment] do |f| %>
+    <%= simple_form_for [@article, @comment], remote: true do |f| %>
       <%- if @comment.errors.any? %>
       <div class="panel panel-danger col-md-offset-1">
         <div class="panel-hading">
@@ -38,12 +38,14 @@
   </div>
 
   <div class="col-md-12">
-    <% if @article.comments.any? %>
-      <div class="comments">
-        <%= render @comments %>
-      </div>
-    <% else %>
-      There are no comments to show
-    <% end %>
+    <div id="messages">
+      <% if @article.comments.any? %>
+        <div class="comments">
+          <%= render @comments %>
+        </div>
+      <% else %>
+        There are no comments to show
+      <% end %>
+    </div>
   </div>
 </article>
