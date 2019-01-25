@@ -6,5 +6,9 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: blog_app2_production
+  url: redis://h:p4c631d309beb8cbfc570cb86be1985100ee1f65dc00da5ee977453d33269eef8@ec2-18-215-139-67.compute-1.amazonaws.com:8129
+  :host: ec2-18-215-139-67.compute-1.amazonaws.com
+  :port: 8129
+  :password: p4c631d309beb8cbfc570cb86be1985100ee1f65dc00da5ee977453d33269eef8
+  :inline: true
+  :timeout: 1

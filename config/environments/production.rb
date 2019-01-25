@@ -1,4 +1,7 @@
 Rails.application.configure do
+  config.middleware.use ChatActionCable
+  config.web_socket_server_url = "wss://jjkazm-blog-app2.herokuapp.com/"
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
