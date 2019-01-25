@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
       flash[:alert] = "Comment has not been created"
       redirect_to article_path(@article)
     end
+    redirect_to article_path(@article)
   end
 
   private
