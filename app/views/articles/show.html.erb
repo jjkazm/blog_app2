@@ -14,7 +14,7 @@
   <% end %>
   <hr>
   <div class="col-md-12">
-    <%= simple_form_for [@article, @comment], remote: true do |f| %>
+    <%= simple_form_for [@article, @comment], remote:true do |f| %>
       <%- if @comment.errors.any? %>
       <div class="panel panel-danger col-md-offset-1">
         <div class="panel-hading">

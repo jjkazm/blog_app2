@@ -9,7 +9,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = 'e1b7eaa90c7e0396d4f552be840f8379730a9ad0ddb2a97b15ed925130007c7b1092848a06f5758107aca7709824b9bcb53d71d9133e0c492e54c6b6e960386e'
-  
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -73,7 +73,7 @@ Devise.setup do |config|
   # config.http_authenticatable = false
 
   # If 401 status code should be returned for AJAX requests. True by default.
-  # config.http_authenticatable_on_xhr = true
+  # config.http_authenticatable_on_xhr = false
 
   # The realm used in Http Basic Authentication. 'Application' by default.
   # config.http_authentication_realm = 'Application'
@@ -248,7 +248,7 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ['*/*', :html]
+  config.navigational_formats = [:"*/*", "*/*", :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
