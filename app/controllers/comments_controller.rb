@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_article
-  before_action :authenticate_user!
+  before_action :customized_authenticate_user!
 
   def create
     @comment = @article.comments.new(comments_params)
@@ -13,7 +13,6 @@ class CommentsController < ApplicationController
       flash[:alert] = "Comment has not been created"
       redirect_to article_path(@article)
     end
-    redirect_to article_path(@article)
   end
 
   private
@@ -24,5 +23,12 @@ class CommentsController < ApplicationController
 
     def set_article
       @article = Article.find(params[:article_id])
+    end
+
+    def customized_authenticate_user!
+      unless current_user
+        flash[:alert] = "You need to sign in or sign up before continuing."
+        redirect_to new_user_session_path
+      end
     end
 end
